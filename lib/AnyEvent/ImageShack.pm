@@ -4,7 +4,7 @@ use strict;
 use AnyEvent::HTTP;
 use HTTP::Request::Common 'POST';
 use base 'Exporter';
-our $VERSION = '0.02';
+our $VERSION = '0.021';
 
 our @EXPORT = qw(image_host);
 
@@ -12,7 +12,7 @@ sub image_host {
 	my $file = shift;
 	my $cb   = pop;
 	my $url = '';
-	if ($file =~ /http/) {
+	if ($file =~ /^http:\/\//) {
 		$url  = $file;
 		$file = undef;
 	}
@@ -71,7 +71,7 @@ AnyEvent::ImageShack - simple non-blocking client for image hosting ImageShack.u
 
 =head1 VERSION
 
-0.02
+0.021
 
 =head1 SYNOPSIS
 
