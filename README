@@ -3,13 +3,13 @@ NAME
     ImageShack.us
 
 VERSION
-    0.02
+    0.2
 
 SYNOPSIS
        use AnyEvent::ImageShack;
    
        my $c = AnyEvent->condvar;
-       image_host('url/or/path/to/image.png', sub { warn shift; $c->send });
+       image_host('url/or/path/to/image.png', key => 'developer_key123', sub { warn shift; $c->send });
        $c->recv;
 
 METHODS
@@ -20,17 +20,27 @@ OPTIONS
     user_agent - UserAgent string
     active - number of active connections for AnyEvent::HTTP
     max_per_host - maximum connections per one host for AnyEvent::HTTP
+    key - developer key for ImageShack API
+    tags - tags for hosted image
+    remove_size - remove information about size from thumbnails (by default
+    1)
+    size - resize image to specified resolution (by default don't resize)
+
 
 SUPPORT
     *   Repository
 
         <http://github.com/konstantinov/AnyEvent-ImageShack>
 
+    *   ImageShack API
+
+        <http://code.google.com/p/imageshackapi/>
+
 SEE ALSO
     AnyEvent, AnyEvent::HTTP
 
 COPYRIGHT & LICENSE
-    Copyright 2010-2011 Dmitry Konstantinov. All right reserved.
+    Copyright 2010-2012 Dmitry Konstantinov. All right reserved.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
